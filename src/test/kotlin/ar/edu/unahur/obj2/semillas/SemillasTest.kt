@@ -1,6 +1,5 @@
 package ar.edu.unahur.obj2.semillas
 
-import ar.edu.unahur.obj2.ejemplo.*
 import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.matchers.booleans.shouldBeFalse
 import io.kotest.matchers.booleans.shouldBeTrue

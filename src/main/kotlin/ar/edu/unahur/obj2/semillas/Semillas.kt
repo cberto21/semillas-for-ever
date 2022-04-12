@@ -1,4 +1,4 @@
-package ar.edu.unahur.obj2.ejemplo
+package ar.edu.unahur.obj2.semillas
 
 abstract class Planta(val anioSemilla : Int, var altura: Double) {
     object Constantes {
