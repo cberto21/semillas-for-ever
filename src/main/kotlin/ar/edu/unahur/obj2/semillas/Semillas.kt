@@ -5,7 +5,7 @@ abstract class Planta(val anioSemilla : Int, var altura: Double) {
         val HORAS_TOLERADAS = 9
     }
     open fun horasSolQueTolera() = 7
-    private fun esFuerte() = horasSolQueTolera() > Constantes.HORAS_TOLERADAS
+     fun esFuerte() = horasSolQueTolera() > Constantes.HORAS_TOLERADAS
     open fun daSemilla() = esFuerte() || condAlternativa()
     abstract fun condAlternativa() : Boolean
 
