@@ -13,20 +13,20 @@ open class Parcela(var ancho: Double, var largo: Double, var horasSolQueRecibe: 
     }
 
     fun plantar(unaPlanta: Planta) {
-        if (excedioElMaximo()) {
-            throw Exception("Ya se alcanzó la cantidad máxima de plantas permitidas en la parcela.")
-        } else if (solAptoParaPlantar(unaPlanta)) {
-            throw Exception("El sol que recibe la parcela supera la cantidad de horas que la planta tolera")
-        } else {
-            plantas.add(unaPlanta)
+       if (excedioElMaximoDePlantas()) {
+            throw Error("Ya se alcanzó la cantidad máxima de plantas permitidas en la parcela.")
         }
+        if (excedeElSolQueTolera(unaPlanta)) {
+            throw Error("El sol que recibe la parcela supera la cantidad de horas que la planta tolera")
+        }
+        plantas.add(unaPlanta)
     }
 
     fun quitar(unaPlanta: Planta) = plantas.remove(unaPlanta)
 
-    fun sePuedePlantar(unaPlanta: Planta): Boolean = excedioElMaximo() || solAptoParaPlantar(unaPlanta)
-    fun excedioElMaximo(): Boolean = cantidadMaximaPlantasTolerada() == cantDePlantasEnParcela()
-    fun solAptoParaPlantar(unaPlanta: Planta): Boolean = horasSolQueRecibe >= unaPlanta.horasSolQueTolera() + 2
+    fun sePuedePlantar(unaPlanta: Planta): Boolean = !(excedioElMaximoDePlantas() || excedeElSolQueTolera(unaPlanta))
+    fun excedioElMaximoDePlantas(): Boolean = cantDePlantasEnParcela() >= cantidadMaximaPlantasTolerada()
+    fun excedeElSolQueTolera(unaPlanta: Planta): Boolean = horasSolQueRecibe >= unaPlanta.horasSolQueTolera() + 2
     fun tieneComplicaciones(): Boolean = plantas.any { it.horasSolQueTolera() < horasSolQueRecibe }
 
 
